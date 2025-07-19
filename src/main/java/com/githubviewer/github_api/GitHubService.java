@@ -1,5 +1,4 @@
 package com.githubviewer.github_api;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,8 @@ public class GitHubService {
                 .filter(repo -> !repo.isFork())
                 .map(repo -> new RepositoryDto(
                         repo.getName(),
-                        repo.getOwner().getLogin()
+                        repo.getOwner().getLogin(),
+                        gitHubClient.getBranches(repo.getOwner().getLogin(), repo.getName())
                 ))
                 .collect(Collectors.toList());
     }

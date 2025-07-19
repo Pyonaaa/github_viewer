@@ -10,4 +10,10 @@ import java.util.List;
 public interface GitHubClient {
     @GetMapping("/users/{username}/repos")
     List<GitHubRepoResponse> getRepos(@PathVariable("username") String username);
+
+    @GetMapping("/repos/{owner}/{repo}/branches")
+    List<GitHubBranchResponse> getBranches(
+            @PathVariable("owner") String owner,
+            @PathVariable("repo") String repo
+    );
 }

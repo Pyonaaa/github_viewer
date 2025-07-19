@@ -1,19 +1,10 @@
 package com.githubviewer.github_api;
 
-public class RepositoryDto {
-    private final String name;
-    private final String ownerLogin;
 
-    public RepositoryDto(String name, String ownerLogin) {
-        this.name = name;
-        this.ownerLogin = ownerLogin;
-    }
+import java.util.List;
 
-    public String getName() {
-        return name;
-    }
-
-    public String getOwnerLogin() {
-        return ownerLogin;
-    }
-}
+public record RepositoryDto(
+        String name,
+        String ownerLogin,
+        List<GitHubBranchResponse> branches
+) {}
